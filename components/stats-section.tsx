@@ -57,28 +57,28 @@ export function StatsSection() {
   }, [isVisible])
 
   return (
-    <section id="stats-section" className="py-24 px-6 bg-background">
+    <section id="stats-section" className="py-16 sm:py-24 px-4 sm:px-6 bg-background">
       <div className="max-w-4xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+        <div className="grid grid-cols-3 gap-4 sm:gap-12 lg:gap-16">
           <div
             className={`text-center transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
-            <p className="font-light text-foreground mb-2 text-6xl md:text-7xl leading-none">{homes.value}</p>
-            <p className="text-xs text-muted-foreground uppercase tracking-wider">Properties Listed</p>
+            <p className="font-light text-foreground mb-1 sm:mb-2 text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-none">{homes.value}</p>
+            <p className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-wider">Properties Listed</p>
           </div>
 
           <div
             className={`text-center transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
-            <p className="font-light text-foreground mb-2 text-6xl md:text-7xl leading-none">{cities.value}</p>
-            <p className="text-xs text-muted-foreground uppercase tracking-wider">Cities</p>
+            <p className="font-light text-foreground mb-1 sm:mb-2 text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-none">{cities.value}</p>
+            <p className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-wider">Cities</p>
           </div>
 
           <div
             className={`text-center transition-all duration-1000 delay-400 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
-            <p className="font-light text-foreground mb-2 text-6xl md:text-7xl leading-none">{users.value}</p>
-            <p className="text-xs text-muted-foreground uppercase tracking-wider">Users</p>
+            <p className="font-light text-foreground mb-1 sm:mb-2 text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-none">{users.value}</p>
+            <p className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-wider">Users</p>
           </div>
         </div>
       </div>

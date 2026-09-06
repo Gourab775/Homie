@@ -45,7 +45,7 @@ function AnimatedIcon({ Icon, delay = 0 }: { Icon: any; delay?: number }) {
   return (
     <div ref={iconRef} className="relative">
       <Icon
-        className={`text-foreground h-16 w-16 ${isVisible ? "animate-draw-icon" : ""}`}
+        className={`text-foreground h-12 w-12 sm:h-16 sm:w-16 ${isVisible ? "animate-draw-icon" : ""}`}
         strokeWidth={1}
         style={{
           strokeDasharray: isVisible ? undefined : 1000,
@@ -78,14 +78,8 @@ export function ServicesSection() {
   }, [])
 
   return (
-    <section id="how-it-works" className="py-32 px-6 pb-24 relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 flex justify-center pointer-events-none z-0">
-        <span className="font-bold text-center text-[18vw] sm:text-[16vw] md:text-[14vw] lg:text-[12vw] leading-none tracking-tighter text-zinc-100 whitespace-nowrap">
-          MISSION
-        </span>
-      </div>
-
-      <style jsx>{`
+    <section id="how-it-works" className="py-24 sm:py-32 px-4 sm:px-6 pb-16 sm:pb-24 relative overflow-hidden">
+      <style>{`
         @keyframes drawPath {
           from {
             stroke-dasharray: 1000;
@@ -96,17 +90,23 @@ export function ServicesSection() {
             stroke-dashoffset: 0;
           }
         }
-        :global(.animate-draw-icon) :global(path),
-        :global(.animate-draw-icon) :global(line),
-        :global(.animate-draw-icon) :global(polyline),
-        :global(.animate-draw-icon) :global(circle),
-        :global(.animate-draw-icon) :global(rect) {
+        .animate-draw-icon path,
+        .animate-draw-icon line,
+        .animate-draw-icon polyline,
+        .animate-draw-icon circle,
+        .animate-draw-icon rect {
           animation: drawPath 2s ease-out forwards;
         }
       `}</style>
 
+      <div className="absolute top-0 left-0 right-0 flex justify-center pointer-events-none z-0 overflow-hidden">
+        <span className="font-bold text-center text-[18vw] sm:text-[16vw] md:text-[14vw] lg:text-[12vw] leading-none tracking-tighter text-zinc-100 whitespace-nowrap">
+          MISSION
+        </span>
+      </div>
+
       <div className="max-w-7xl mx-auto relative z-10">
-        <div ref={sectionRef} className="relative px-6 lg:px-8 py-16 lg:py-10 mb-32 overflow-hidden rounded-3xl">
+        <div ref={sectionRef} className="relative px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-10 mb-20 sm:mb-32 overflow-hidden rounded-2xl sm:rounded-3xl">
           {/* Background image that spans full width */}
           <div className="absolute inset-0 w-full h-full">
             <img
@@ -121,45 +121,45 @@ export function ServicesSection() {
           </div>
 
           {/* Text content on top */}
-          <div className="relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="relative z-10 grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center">
             <div className="order-1 lg:order-2">
-              <p className="text-sm uppercase tracking-[0.2em] text-white/80 font-medium mb-4">Our mission</p>
-              <h2 className="font-sans md:text-4xl lg:text-5xl font-medium text-white text-balance mb-8 text-5xl">
+              <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/80 font-medium mb-3 sm:mb-4">Our mission</p>
+              <h2 className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-medium text-white text-balance mb-6 sm:mb-8">
                 Simplifying peer-to-peer rentals
               </h2>
-              <div className="space-y-6 text-white/90 leading-relaxed">
+              <div className="space-y-4 sm:space-y-6 text-white/90 leading-relaxed text-sm sm:text-base">
                 <p>
                   At Homie, we believe renting a home should be as simple as booking a restaurant. Our platform connects
                   owners and tenants directly, with no agency fees.
                 </p>
                 <p>
-                  Every listing is verified, every transaction secured. We've reimagined the rental experience to make
+                  Every listing is verified, every transaction secured. We&apos;ve reimagined the rental experience to make
                   it transparent, fast, and human.
                 </p>
               </div>
-              <div className="mt-10"></div>
+              <div className="mt-8 sm:mt-10"></div>
             </div>
           </div>
         </div>
 
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-normal mb-6 text-balance font-serif">Everything you need</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            A complete platform to manage your rentals from A to Z, whether you're an owner or a tenant.
+        <div className="text-center mb-12 sm:mb-20">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal mb-4 sm:mb-6 text-balance font-serif">Everything you need</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed text-sm sm:text-base">
+            A complete platform to manage your rentals from A to Z, whether you&apos;re an owner or a tenant.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, index) => (
             <div
               key={index}
-              className="group p-8 rounded-3xl hover:bg-zinc-50 transition-colors duration-300 text-center"
+              className="group p-6 sm:p-8 rounded-2xl sm:rounded-3xl hover:bg-zinc-50 transition-colors duration-300 text-center"
             >
-              <div className="mb-6 flex justify-center">
+              <div className="mb-4 sm:mb-6 flex justify-center">
                 <AnimatedIcon Icon={service.icon} delay={index * 0.2} />
               </div>
-              <h3 className="text-xl font-medium mb-3 text-foreground">{service.title}</h3>
-              <p className="text-muted-foreground leading-relaxed text-sm">{service.description}</p>
+              <h3 className="text-lg sm:text-xl font-medium mb-2 sm:mb-3 text-foreground">{service.title}</h3>
+              <p className="text-muted-foreground leading-relaxed text-xs sm:text-sm">{service.description}</p>
             </div>
           ))}
         </div>

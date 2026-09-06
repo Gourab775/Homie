@@ -120,21 +120,21 @@ export function TestimonialsSection() {
   }, [isPaused, isInitialized])
 
   return (
-    <section id="testimonials" className="py-32 px-6">
+    <section id="testimonials" className="py-24 sm:py-32 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-normal leading-tight font-serif">What they say about us</h2>
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal leading-tight font-serif">What they say about us</h2>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {/* First row - scrolls left to right */}
           <div className="relative">
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
             <div
               ref={scrollRef}
-              className="flex gap-6 overflow-x-hidden"
+              className="flex gap-4 sm:gap-6 overflow-x-hidden"
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
               onTouchStart={() => setIsPaused(true)}
@@ -144,23 +144,23 @@ export function TestimonialsSection() {
               {duplicatedTestimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-full sm:w-[400px] bg-card border border-border rounded-2xl p-8 border-none py-4"
+                  className="flex-shrink-0 w-[85vw] sm:w-[400px] bg-card border border-border rounded-2xl p-4 sm:p-8 border-none py-3 sm:py-4"
                 >
-                  <div className="flex items-start gap-4 mb-6">
+                  <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
                     <Image
                       src={testimonial.avatar || "/placeholder.svg"}
                       alt={testimonial.name}
                       width={48}
                       height={48}
-                      className="w-12 h-12 rounded-full object-cover"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover"
                     />
-                    <p className="text-foreground leading-relaxed flex-1 text-lg">
+                    <p className="text-foreground leading-relaxed flex-1 text-sm sm:text-lg">
                       &ldquo;{testimonial.content}&rdquo;
                     </p>
                   </div>
                   <div className="mt-auto">
-                    <p className="text-foreground text-sm font-bold">{testimonial.name}</p>
-                    <p className="text-muted-foreground text-xs">{testimonial.role}</p>
+                    <p className="text-foreground text-xs sm:text-sm font-bold">{testimonial.name}</p>
+                    <p className="text-muted-foreground text-[10px] sm:text-xs">{testimonial.role}</p>
                   </div>
                 </div>
               ))}
@@ -169,12 +169,12 @@ export function TestimonialsSection() {
 
           {/* Second row - scrolls right to left */}
           <div className="relative">
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
             <div
               ref={scrollRef2}
-              className="flex gap-6 overflow-x-hidden"
+              className="flex gap-4 sm:gap-6 overflow-x-hidden"
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
               onTouchStart={() => setIsPaused(true)}
@@ -184,23 +184,23 @@ export function TestimonialsSection() {
               {duplicatedTestimonials2.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-full sm:w-[400px] bg-card border border-border rounded-2xl p-8 border-none py-4"
+                  className="flex-shrink-0 w-[85vw] sm:w-[400px] bg-card border border-border rounded-2xl p-4 sm:p-8 border-none py-3 sm:py-4"
                 >
-                  <div className="flex items-start gap-4 mb-6">
+                  <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
                     <Image
                       src={testimonial.avatar || "/placeholder.svg"}
                       alt={testimonial.name}
                       width={48}
                       height={48}
-                      className="w-12 h-12 rounded-full object-cover"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover"
                     />
-                    <p className="text-lg text-foreground leading-relaxed flex-1">
+                    <p className="text-sm sm:text-lg text-foreground leading-relaxed flex-1">
                       &ldquo;{testimonial.content}&rdquo;
                     </p>
                   </div>
                   <div className="mt-auto">
-                    <p className="text-foreground text-sm font-bold">{testimonial.name}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                    <p className="text-foreground text-xs sm:text-sm font-bold">{testimonial.name}</p>
+                    <p className="text-[10px] sm:text-sm text-muted-foreground">{testimonial.role}</p>
                   </div>
                 </div>
               ))}

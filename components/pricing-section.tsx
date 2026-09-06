@@ -90,7 +90,7 @@ export function PricingSection() {
     const scrollContainer = scrollRef.current
     if (!scrollContainer) return
 
-    const speed = isHovered ? 0.3 : 1 // Slow down on hover instead of changing animation duration
+    const speed = isHovered ? 0.3 : 1
     let lastTime = performance.now()
 
     const animate = (currentTime: number) => {
@@ -119,18 +119,18 @@ export function PricingSection() {
   }, [isHovered])
 
   return (
-    <section id="pricing" className="py-32 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 text-center mb-20">
-        <h2 className="text-4xl md:text-5xl font-normal mb-6 text-balance font-serif">Featured properties</h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+    <section id="pricing" className="py-24 sm:py-32 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center mb-12 sm:mb-20">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal mb-4 sm:mb-6 text-balance font-serif">Featured properties</h2>
+        <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed text-sm sm:text-base">
           Discover handpicked homes from verified owners. Book with confidence.
         </p>
       </div>
 
       <div className="relative w-full" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-        <div ref={scrollRef} className="flex gap-6" style={{ width: "fit-content" }}>
+        <div ref={scrollRef} className="flex gap-4 sm:gap-6" style={{ width: "fit-content" }}>
           {duplicatedProperties.map((property, index) => (
-            <div key={index} className="flex-shrink-0 w-[85vw] sm:w-[60vw] lg:w-[400px]">
+            <div key={index} className="flex-shrink-0 w-[85vw] sm:w-[60vw] md:w-[45vw] lg:w-[400px]">
               <PropertyBookingCard {...property} onBook={() => console.log(`Booking ${property.propertyName}`)} />
             </div>
           ))}

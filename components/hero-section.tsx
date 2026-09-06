@@ -52,7 +52,7 @@ export function HeroSection() {
   const heightVh = 100 - easeOutQuad(scrollProgress) * 37.5
 
   return (
-    <section className="pt-32 pb-12 px-6 min-h-screen flex items-center relative overflow-hidden">
+    <section className="pt-24 sm:pt-32 pb-8 sm:pb-12 px-4 sm:px-6 min-h-screen flex items-center relative overflow-hidden">
       <div className="absolute inset-0 top-0">
         <div
           className="w-full will-change-transform overflow-hidden"
@@ -83,20 +83,20 @@ export function HeroSection() {
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 sm:mb-12">
           <div
             className={`transition-all duration-1000 delay-[800ms] ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}`}
           >
-            <h1 className="font-serif text-[3.5rem] sm:text-[4.5rem] md:text-[5.5rem] lg:text-[6.5rem] xl:text-[7.5rem] 2xl:text-[8.5rem] font-normal leading-tight mb-6 w-full px-4 max-w-6xl mx-auto text-balance">
+            <h1 className="font-serif text-[2.5rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] xl:text-[6.5rem] 2xl:text-[7.5rem] font-normal leading-tight mb-4 sm:mb-6 w-full px-2 sm:px-4 max-w-6xl mx-auto text-balance">
               <AnimatedText text="Find your home away from home" delay={0.3} />
             </h1>
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-8">
+        <div className="flex flex-col items-center justify-center gap-6 sm:gap-8">
           <div className="relative">
             <div
-              className={`relative w-[234px] md:w-[281px] lg:w-[351px] will-change-transform transition-all duration-[1500ms] ease-out delay-500 ${
+              className={`relative w-[180px] sm:w-[234px] md:w-[281px] lg:w-[351px] will-change-transform transition-all duration-[1500ms] ease-out delay-500 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-[400px]"
               }`}
             >

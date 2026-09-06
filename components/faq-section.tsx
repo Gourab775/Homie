@@ -35,26 +35,26 @@ const faqs = [
 
 export function FAQSection() {
   return (
-    <section id="faq" className="py-32 px-6 pb-80">
+    <section id="faq" className="py-24 sm:py-32 px-4 sm:px-6 pb-40 sm:pb-80">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-normal mb-6 text-balance font-serif">Frequently asked questions</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal mb-4 sm:mb-6 text-balance font-serif">Frequently asked questions</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed text-sm sm:text-base">
             Everything you need to know about Homie. Have a question not listed? Contact our support.
           </p>
         </div>
 
-        <Accordion type="single" collapsible className="space-y-3 py-0 my-0">
+        <Accordion type="single" collapsible className="space-y-2 sm:space-y-3 py-0 my-0">
           {faqs.map((faq, index) => (
             <AccordionItem
               key={index}
               value={`item-${index}`}
-              className="bg-card border border-border rounded-xl px-6 data-[state=open]:border-foreground/30"
+              className="bg-card border border-border rounded-xl px-4 sm:px-6 data-[state=open]:border-foreground/30"
             >
-              <AccordionTrigger className="text-left text-base font-medium text-foreground hover:no-underline py-5">
+              <AccordionTrigger className="text-left text-sm sm:text-base font-medium text-foreground hover:no-underline py-4 sm:py-5">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-5 leading-relaxed text-sm">
+              <AccordionContent className="text-muted-foreground pb-4 sm:pb-5 leading-relaxed text-xs sm:text-sm">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>
