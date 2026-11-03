@@ -58,13 +58,20 @@ export function HeroSection() {
 
   return (
     <section className="pt-32 pb-12 px-6 min-h-screen flex items-center relative overflow-hidden">
-      <div className="absolute inset-0 top-0 z-0 bg-zinc-900 bg-[url('/images/hero-bg.png')] bg-cover bg-center">
+      <div
+        className="absolute inset-0 top-0 z-0 overflow-hidden pointer-events-none"
+        style={{
+          opacity: Math.max(0, 1 - scrollProgress * 1.25),
+          visibility: scrollProgress >= 0.99 ? "hidden" : "visible",
+        }}
+      >
         <div
-          className="w-full will-change-transform overflow-hidden"
+          className="relative w-full will-change-transform overflow-hidden"
           style={{
             transform: `scale(${scale})`,
             borderRadius: `${borderRadius}px`,
             height: `${heightVh}vh`,
+            transformOrigin: "top center",
           }}
         >
           <video
@@ -114,8 +121,8 @@ export function HeroSection() {
               }`}
             >
               <img
-                src="/images/homie-app-interface.jpg"
-                alt="Homie travel rental app interface"
+                src="/images/homie-app-phone-mockup.jpg"
+                alt="Homie travel rental app phone mockup"
                 className="relative z-10 w-full h-auto rounded-[12%]"
               />
             </div>

@@ -74,7 +74,7 @@ export function FeaturesSection() {
   return (
     <section id="features" className="py-32 px-6 relative overflow-hidden">
       <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-center pointer-events-none z-0">
-        <span className="font-bold text-center text-[20vw] sm:text-[18vw] md:text-[16vw] lg:text-[14vw] leading-none tracking-tighter text-zinc-100 whitespace-nowrap">
+        <span className="font-bold text-center text-[20vw] sm:text-[18vw] md:text-[16vw] lg:text-[14vw] leading-none tracking-tighter text-zinc-200 whitespace-nowrap">
           MANAGE
         </span>
       </div>

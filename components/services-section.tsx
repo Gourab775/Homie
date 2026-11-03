@@ -80,7 +80,7 @@ export function ServicesSection() {
   return (
     <section id="how-it-works" className="py-32 px-6 pb-24 relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 flex justify-center pointer-events-none z-0">
-        <span className="font-bold text-center text-[18vw] sm:text-[16vw] md:text-[14vw] lg:text-[12vw] leading-none tracking-tighter text-zinc-100 whitespace-nowrap">
+        <span className="font-bold text-center text-[18vw] sm:text-[16vw] md:text-[14vw] lg:text-[12vw] leading-none tracking-tighter text-zinc-200 whitespace-nowrap">
           MISSION
         </span>
       </div>
