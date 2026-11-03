@@ -95,8 +95,11 @@ export function HeroSection() {
         }}
       >
         <span
-          className="block text-white mix-blend-difference font-bold text-[28vw] sm:text-[25vw] md:text-[22vw] lg:text-[20vw] tracking-tighter select-none text-center leading-none"
-          style={{ marginBottom: "0" }}
+          className="block font-bold text-[28vw] sm:text-[25vw] md:text-[22vw] lg:text-[20vw] tracking-tighter select-none text-center leading-none transition-colors duration-300"
+          style={{
+            marginBottom: "0",
+            color: scrollProgress > 0.45 ? "#181818" : "#ffffff",
+          }}
         >
           HOMIE
         </span>
@@ -121,7 +124,7 @@ export function HeroSection() {
               }`}
             >
               <img
-                src="/images/homie-app-phone-mockup.jpg"
+                src="/images/homie-app-phone-mockup.png"
                 alt="Homie travel rental app phone mockup"
                 className="relative z-10 w-full h-auto rounded-[12%]"
               />
