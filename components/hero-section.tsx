@@ -45,6 +45,7 @@ export function HeroSection() {
       window.removeEventListener("scroll", handleScroll)
       if (animationFrame.current !== null) {
         cancelAnimationFrame(animationFrame.current)
+        animationFrame.current = null
       }
     }
   }, [])
@@ -129,7 +130,7 @@ export function HeroSection() {
               }`}
             >
               <img
-                src="/images/homie-app-phone-mockup.png"
+                src="/images/homie-app-phone-mockup.png?v=3"
                 alt="Homie travel rental app phone mockup"
                 className="relative z-10 w-full h-auto rounded-[12%]"
               />
