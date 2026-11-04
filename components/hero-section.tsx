@@ -8,6 +8,8 @@ export function HeroSection() {
   const targetProgress = useRef(0)
   const currentProgress = useRef(0)
   const animationFrame = useRef<number | null>(null)
+  const maxRise = useRef(0)
+  const phoneWrapperRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -50,6 +52,37 @@ export function HeroSection() {
     }
   }, [])
 
+  // Measure how far the phone dips below the fold (section is exactly 100vh).
+  // The scroll animation then lifts the phone exactly clear of the section's
+  // bottom edge, so its hidden part is revealed as the user scrolls.
+  useEffect(() => {
+    const measure = () => {
+      const phone = phoneWrapperRef.current
+      if (!phone) return
+      // offsetTop chain is transform-immune, so re-measuring stays correct
+      // even while the rise transform is applied.
+      let top = 0
+      let node: HTMLElement | null = phone
+      while (node) {
+        top += node.offsetTop
+        node = node.offsetParent as HTMLElement | null
+      }
+      const dip = top + phone.offsetHeight - window.innerHeight
+      maxRise.current = Math.max(0, dip + 8)
+    }
+
+    measure()
+    const resizeObserver = new ResizeObserver(measure)
+    if (phoneWrapperRef.current) resizeObserver.observe(phoneWrapperRef.current)
+    window.addEventListener("resize", measure)
+    const settleTimer = setTimeout(measure, 2500)
+    return () => {
+      resizeObserver.disconnect()
+      window.removeEventListener("resize", measure)
+      clearTimeout(settleTimer)
+    }
+  }, [])
+
   const easeOutQuad = (t: number) => t * (2 - t)
   const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3)
 
@@ -62,8 +95,11 @@ export function HeroSection() {
   const channel = Math.round(255 - colorT * 231) // 255 (white) -> 24 (#181818)
   const homieColor = `rgb(${channel}, ${channel}, ${channel})`
 
+  // Phone rises as the user scrolls; eased so it settles gently at full rise
+  const phoneRise = easeOutQuad(scrollProgress) * maxRise.current
+
   return (
-    <section className="pt-32 pb-12 px-6 min-h-screen flex items-center relative overflow-hidden">
+    <section className="pt-32 pb-12 px-6 h-screen flex items-start relative overflow-hidden">
       <div
         className="absolute inset-0 top-0 z-0 overflow-hidden pointer-events-none"
         style={{
@@ -94,11 +130,7 @@ export function HeroSection() {
 
       <div
         className="absolute bottom-0 left-0 right-0 w-full overflow-hidden pointer-events-none z-10 flex items-end justify-center"
-        style={{
-          transform: `translateY(${scrollProgress * 150}px)`,
-          opacity: 1 - scrollProgress * 0.8,
-          height: "100%",
-        }}
+        style={{ height: "100%" }}
       >
         <span
           className="block font-bold text-[28vw] sm:text-[25vw] md:text-[22vw] lg:text-[20vw] tracking-tighter select-none text-center leading-none"
@@ -123,7 +155,11 @@ export function HeroSection() {
         </div>
 
         <div className="flex flex-col items-center justify-center gap-8">
-          <div className="relative z-30">
+          <div
+            ref={phoneWrapperRef}
+            className="relative z-30 will-change-transform"
+            style={{ transform: `translateY(${-phoneRise}px)` }}
+          >
             <div
               className={`relative w-[234px] md:w-[281px] lg:w-[351px] will-change-transform transition-all duration-[1500ms] ease-out delay-500 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-[400px]"
