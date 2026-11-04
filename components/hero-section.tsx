@@ -56,6 +56,11 @@ export function HeroSection() {
   const borderRadius = easeOutCubic(scrollProgress) * 48
   const heightVh = 100 - easeOutQuad(scrollProgress) * 37.5
 
+  // Smoothly interpolate HOMIE text color from white to dark as the user scrolls
+  const colorT = easeOutQuad(Math.min(Math.max((scrollProgress - 0.25) / 0.45, 0), 1))
+  const channel = Math.round(255 - colorT * 231) // 255 (white) -> 24 (#181818)
+  const homieColor = `rgb(${channel}, ${channel}, ${channel})`
+
   return (
     <section className="pt-32 pb-12 px-6 min-h-screen flex items-center relative overflow-hidden">
       <div
@@ -95,10 +100,10 @@ export function HeroSection() {
         }}
       >
         <span
-          className="block font-bold text-[28vw] sm:text-[25vw] md:text-[22vw] lg:text-[20vw] tracking-tighter select-none text-center leading-none transition-colors duration-300"
+          className="block font-bold text-[28vw] sm:text-[25vw] md:text-[22vw] lg:text-[20vw] tracking-tighter select-none text-center leading-none"
           style={{
-            marginBottom: "0",
-            color: scrollProgress > 0.45 ? "#181818" : "#ffffff",
+            marginBottom: "4vh",
+            color: homieColor,
           }}
         >
           HOMIE
